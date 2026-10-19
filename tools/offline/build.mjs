@@ -58,6 +58,13 @@ for (const [img, mime] of [['ads/mcyyy-side.webp', 'image/webp'], ['ads/wechat-r
   html = html.replace(`src="${img}"`, `src="data:${mime};base64,${data}"`);
 }
 
+// app 模式小窗口的标题栏颜色跟着 theme-color 走，离线版统一定成黑色
+must('<meta name="theme-color" content="#3451b2" media="(prefers-color-scheme: light)">', ' 亮色 theme-color');
+must('<meta name="theme-color" content="#1b1b1f" media="(prefers-color-scheme: dark)">', ' 暗色 theme-color');
+html = html
+  .replace('<meta name="theme-color" content="#3451b2" media="(prefers-color-scheme: light)">', '<meta name="theme-color" content="#000000">')
+  .replace('<meta name="theme-color" content="#1b1b1f" media="(prefers-color-scheme: dark)">\n', '');
+
 // 页脚注明这是哪一版的离线副本
 const foot = '<div class="foot">';
 must(foot, '页脚');

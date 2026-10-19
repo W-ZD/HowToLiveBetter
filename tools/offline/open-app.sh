@@ -12,14 +12,14 @@ URL="file://$FILE"
 
 for b in google-chrome google-chrome-stable chromium chromium-browser microsoft-edge brave-browser; do
   if command -v "$b" >/dev/null 2>&1; then
-    "$b" --app="$URL" --window-size=440,760 --window-position=100,100 >/dev/null 2>&1 &
+    "$b" --app="$URL" --window-size=360,640 --window-position=100,100 >/dev/null 2>&1 &
     exit 0
   fi
 done
 
 # mac 自带 Chrome 路径
 if [ -x "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" ]; then
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --app="$URL" --window-size=440,760 --window-position=100,100 &
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --app="$URL" --window-size=360,640 --window-position=100,100 &
   exit 0
 fi
 

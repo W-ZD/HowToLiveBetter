@@ -42,6 +42,7 @@ body{padding-bottom:56px!important}
     if(!cards.length){ setTimeout(boot,80); return; }
     var cnt=document.getElementById('pyCnt');
 
+    var BK='pyBookmark';
     function list(){ return cards.filter(function(c){ return !c.hidden && c.offsetParent; }); }
     function here(vis){
       // 当前视口正中那条，就是"我正在看的这条"
@@ -52,6 +53,7 @@ body{padding-bottom:56px!important}
       }
       return best;
     }
+    function curId(vis){ var c=vis[here(vis)]; return c && c.id.slice(2); }
     function go(d){
       var vis=list(); if(!vis.length){ cnt.textContent='\u5f53\u524d\u7b5b\u9009\u4e0b\u6ca1\u6709\u6761\u76ee'; return; }
       var t=here(vis)+d;
@@ -74,6 +76,17 @@ body{padding-bottom:56px!important}
     });
     // 页面筛选/滚动后序号要跟上。只读一遍可见性和位置，不写任何样式，不会和页面打架。
     document.addEventListener('scroll', function(){ clearTimeout(window.__pyT); window.__pyT=setTimeout(paint,200); }, {passive:true});
+
+    // 退出前记下看到哪条了（书签），下次打开自动跳回去
+    addEventListener('beforeunload', function(){
+      var id=curId(list());
+      if(id){ try{ localStorage.setItem(BK,id); }catch(e){} }
+    });
+    try{
+      var saved=localStorage.getItem(BK);
+      if(saved && typeof gotoItem==='function') gotoItem(saved,'');
+    }catch(e){}
+
     paint();
   }
   if(document.readyState==='complete'||document.readyState==='interactive') setTimeout(boot,400);
