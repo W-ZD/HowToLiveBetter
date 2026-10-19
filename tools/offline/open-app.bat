@@ -9,12 +9,12 @@ set FILE=%cd%\dist\HowToLiveBetter.html
 
 where chrome >nul 2>nul
 if %errorlevel%==0 (
-  start chrome --app="file:///%FILE:\=/%" --window-size=440,760 --window-position=100,100
+  start chrome --app="file:///%FILE:\=/%" --window-size=360,640 --window-position=100,100
   goto :eof
 )
 where msedge >nul 2>nul
 if %errorlevel%==0 (
-  start msedge --app="file:///%FILE:\=/%" --window-size=440,760 --window-position=100,100
+  start msedge --app="file:///%FILE:\=/%" --window-size=360,640 --window-position=100,100
   goto :eof
 )
 
