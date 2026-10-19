@@ -9,12 +9,13 @@ set FILE=%cd%\dist\HowToLiveBetter.html
 
 where chrome >nul 2>nul
 if %errorlevel%==0 (
-  start chrome --app="file:///%FILE:\=/%" --window-size=360,640 --window-position=100,100
+  REM 独立 user-data-dir 保证 Chrome 已开着时启动参数照样生效；--force-dark-mode 让标题栏变黑
+  start chrome --app="file:///%FILE:\=/%" --user-data-dir="%USERPROFILE%\.cache\hltb-app" --no-first-run --no-default-browser-check --force-dark-mode --window-size=300,520 --window-position=100,100
   goto :eof
 )
 where msedge >nul 2>nul
 if %errorlevel%==0 (
-  start msedge --app="file:///%FILE:\=/%" --window-size=360,640 --window-position=100,100
+  start msedge --app="file:///%FILE:\=/%" --user-data-dir="%USERPROFILE%\.cache\hltb-app" --no-first-run --no-default-browser-check --force-dark-mode --window-size=300,520 --window-position=100,100
   goto :eof
 )
 
