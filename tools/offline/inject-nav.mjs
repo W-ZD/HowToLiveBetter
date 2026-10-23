@@ -24,8 +24,8 @@ if (html.includes('id="pybar"')) { console.log('已经注入过导航条，跳�
 const NAV = `
 <style>
 #pybar{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;background:rgba(20,20,20,.92);color:#fff;font-size:14px;font-family:system-ui,sans-serif}
-#pybar button{padding:6px 14px;border:none;border-radius:6px;background:#3a7afe;color:#fff;cursor:pointer;font-size:14px}
-#pybar button:active{background:#2a5fd0}
+#pybar button{padding:6px 14px;border:1px solid rgba(255,255,255,.18);border-radius:6px;background:#2f2f33;color:#fff;cursor:pointer;font-size:14px}
+#pybar button:active{background:#000}
 #pyCnt{min-width:80px;text-align:center}
 body{padding-bottom:56px!important}
 </style>
